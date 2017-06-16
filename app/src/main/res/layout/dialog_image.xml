@@ -26,30 +26,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:src="@drawable/samplefoto"
+            android:src="@drawable/kebakaran"
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:padding="8dp"
+            android:padding="4dp"
             android:text="Related tweet: "/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
             android:textColor="#000"
-            android:text="\@TMCPoldaMetro: Terjadi kebakaran di Stasiun Tanjung Barat. 10 mobil pemadam kebakaran berjuang memadamkan api."
+            android:text="\@TMCPoldaMetro: 23.17 Kebakaran di ruang penyimpanan obat RSUD Tangerang, saat ini dalam penanganan DPK"
             android:id="@+id/textView8"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Close"
-            android:background="@drawable/button_red"
-            android:textColor="#fff"
-            android:layout_gravity="center"/>
     </LinearLayout>
 </LinearLayout>

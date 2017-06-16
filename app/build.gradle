@@ -50,4 +50,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'com.google.android.gms:play-services-maps:11.0.0'
+    compile 'com.sothree.slidinguppanel:library:3.3.1'
+
 }

@@ -10,9 +10,12 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import butterknife.BindView;
@@ -31,6 +34,15 @@ public class RecentTabFragment extends Fragment {
 
     @BindView(R.id.report_danger)
     FloatingActionButton fab;
+
+    /**
+     * TODO
+     * Tambahin:
+     * - layout post kejadian baru (dialog biasa)
+     * x show photo
+     * - layout post comment (bottom sliding up)
+     * - direct call
+     */
 
     @Override
     @SuppressWarnings("Deprecation")
@@ -55,7 +67,11 @@ public class RecentTabFragment extends Fragment {
                         null);
 
                 dialogBuilder.setView(dialogView);
-                final AlertDialog dialog = dialogBuilder.create();
+                AlertDialog dialog = dialogBuilder.create();
+                Window window = dialog.getWindow();
+                WindowManager.LayoutParams param = window.getAttributes();
+                param.x = 450;
+                window.setAttributes(param);
                 dialog.show();
             }
         });
@@ -63,14 +79,8 @@ public class RecentTabFragment extends Fragment {
         post_comment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
-                final View dialogView = getActivity().getLayoutInflater().inflate(R.layout
-                                .dialog_image,
-                        null);
-
-                dialogBuilder.setView(dialogView);
-                final AlertDialog dialog = dialogBuilder.create();
-                dialog.show();
+                Intent intent = new Intent(getActivity(), CommentActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -80,11 +90,14 @@ public class RecentTabFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
                 final View dialogView = getActivity().getLayoutInflater().inflate(R.layout
-                                .dialog_add_route,
+                                .dialog_report,
                         null);
 
                 dialogBuilder.setView(dialogView);
-                final AlertDialog dialog = dialogBuilder.create();
+                AlertDialog dialog = dialogBuilder.create();
+                Window window = dialog.getWindow();
+                WindowManager.LayoutParams param = window.getAttributes();
+                param.x = 450;
                 dialog.show();
             }
         });
