@@ -20,7 +20,7 @@
     <style name="actionbar">
         <item name="android:background">#e74c3c</item>
         <item name="android:textColor">#fff</item>
-        <item name="android:text">Kebakaran di Tanjung Barat</item>
+        <item name="android:text">Kebakaran di RSUD Tangerang</item>
     </style>
 
 </resources>

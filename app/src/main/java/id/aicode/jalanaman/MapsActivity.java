@@ -25,7 +25,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        getSupportActionBar().setTitle("Kebakaran di Tanjung Barat");
+        getSupportActionBar().setTitle("Kebakaran di RSUD Tangerang");
         mapFragment.getMapAsync(this);
     }
 
@@ -44,8 +44,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-6.308367, 106.838665);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Kebakaran di Tanjung Barat"));
+        LatLng sydney = new LatLng(-6.169933, 106.635668);
+        mMap.addMarker(new MarkerOptions().position(sydney).title("Kebakaran di RSUD Tangerang"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 }

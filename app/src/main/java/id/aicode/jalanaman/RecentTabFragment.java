@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,11 +27,11 @@ public class RecentTabFragment extends Fragment {
     @BindView(R.id.maps_button)
     Button show_map;
 
-    @BindView(R.id.show_photo)
-    Button show_photo;
+    @BindView(R.id.gambar)
+    ImageView show_photo;
 
-    @BindView(R.id.post_comment)
-    Button post_comment;
+    @BindView(R.id.komen)
+    ImageView post_comment;
 
     @BindView(R.id.report_danger)
     FloatingActionButton fab;
