@@ -14,7 +14,8 @@
         android:paddingLeft="16dp"
         android:paddingTop="8dp"
         android:text="Tambah lokasi"
-        android:textColor="#FFF"/>
+        android:textColor="#FFF"
+        android:id="@+id/textView7"/>
 
     <LinearLayout
         android:layout_width="match_parent"

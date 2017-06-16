@@ -86,7 +86,7 @@
 
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:layout_weight=".60"
                             android:src="@drawable/phone"/>
 
@@ -155,7 +155,7 @@
 
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:layout_weight=".60"
                             android:src="@drawable/phone"/>
 
@@ -223,7 +223,7 @@
 
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:layout_weight=".60"
                             android:src="@drawable/phone"/>
 
@@ -291,9 +291,10 @@
 
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:layout_weight=".60"
-                            android:src="@drawable/phone"/>
+                            android:src="@drawable/phone"
+                            android:id="@+id/imageView"/>
 
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
@@ -359,7 +360,7 @@
 
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:layout_weight=".60"
                             android:src="@drawable/phone"/>
 

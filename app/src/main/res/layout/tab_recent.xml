@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#2c3e50">
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -173,6 +178,7 @@
                         android:layout_weight=".3"
                         android:background="#e74c3c"
                         android:text="COMMENT"
+                        android:id="@+id/post_comment"
                         android:textColor="#fff"
                         android:textSize="12sp"/>
 
@@ -182,7 +188,7 @@
                         android:layout_weight=".3"
                         android:background="#e74c3c"
                         android:text="VIEW PHOTO"
-
+                        android:id="@+id/show_photo"
                         android:textColor="#fff"
                         android:textSize="12sp"/>
 
@@ -194,6 +200,7 @@
                         android:background="#e74c3c"
                         android:text="MAPS"
                         android:textColor="#fff"
+                        android:id="@+id/maps_button"
                         android:textSize="12sp"/>
 
                 </LinearLayout>
@@ -207,7 +214,6 @@
                       android:orientation="horizontal">
 
             <com.github.vipulasri.timelineview.TimelineView
-                android:id="@+id/time_marker"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="4dp"
@@ -252,7 +258,7 @@
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="4dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight=".5"
                                     android:background="#27ae60"
@@ -642,3 +648,13 @@
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/report_danger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:textAlignment="center"
+        android:src="@drawable/ic_action_name"
+        />
+</android.support.design.widget.CoordinatorLayout>
