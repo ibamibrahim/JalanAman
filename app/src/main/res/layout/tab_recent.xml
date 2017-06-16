@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:background="#e74c3c"
             android:padding="12dp"
-            android:text="Recent dangers.."
+            android:text="Recent dangers"
             android:textColor="#FFFFFF"
             android:textSize="15sp"/>
 

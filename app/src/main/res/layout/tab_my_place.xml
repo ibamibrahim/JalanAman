@@ -132,14 +132,14 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="From: Jl. Lenteng Agung"
+                                android:text="Dari: Jl. Lenteng Agung"
                                 android:textColor="#2c3e50"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="To: Jl. Condet Raya"
+                                android:text="Ke: Jl. Condet Raya"
                                 android:textColor="#2c3e50"
                                 android:textStyle="bold"/>
                         </LinearLayout>
