@@ -7,19 +7,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ecf0f1"
+        android:background="#2c3e50"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#34495E"
-            android:padding="16dp"
+            android:background="#e74c3c"
+            android:padding="12dp"
             android:text="Recent dangers.."
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"/>
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"/>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                       xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -63,7 +62,10 @@
                             android:layout_height="wrap_content"
                             android:layout_weight=".8"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:paddingBottom="16dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -74,7 +76,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight=".5"
-                                    android:text="Ibrahim"
+                                    android:text="\@ibamibrahim"
                                     android:textColor="#000"
                                     android:textSize="18sp"/>
 
@@ -173,28 +175,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_weight=".3"
-                        android:background="#2c3e50"
-                        android:textSize="12sp"
+                        android:background="#e74c3c"
                         android:text="COMMENT"
-                        android:textColor="#fff"/>
+                        android:textColor="#fff"
+                        android:textSize="12sp"/>
 
                     <Button
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_weight=".3"
-                        android:background="#2c3e50"                        android:textSize="12sp"
-
+                        android:background="#e74c3c"
                         android:text="VIEW PHOTO"
-                        android:textColor="#fff"/>
+
+                        android:textColor="#fff"
+                        android:textSize="12sp"/>
 
                     <Button
-                        android:layout_width="wrap_content"                        android:textSize="12sp"
-
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
+
                         android:layout_weight=".3"
-                        android:background="#2c3e50"
+                        android:background="#e74c3c"
                         android:text="MAPS"
-                        android:textColor="#fff"/>
+                        android:textColor="#fff"
+                        android:textSize="12sp"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -242,7 +246,10 @@
                             android:layout_height="wrap_content"
                             android:layout_weight=".8"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:paddingBottom="16dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -253,10 +260,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight=".5"
-                                    android:text="JalanAman"
-                                    android:textStyle="bold"
-                                    android:textColor="#27ae60"
-                                    android:textSize="18sp"/>
+                                    android:background="#27ae60"
+                                    android:gravity="center"
+                                    android:paddingBottom="4dp"
+                                    android:paddingTop="4dp"
+                                    android:text="\@JalanAman"
+                                    android:textColor="#fff"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"/>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -389,7 +400,10 @@
                             android:layout_height="wrap_content"
                             android:layout_weight=".8"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:paddingBottom="16dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -400,7 +414,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight=".5"
-                                    android:text="Satria Bagus"
+                                    android:text="\@satriabw"
                                     android:textColor="#000"
                                     android:textSize="18sp"/>
 
@@ -536,7 +550,10 @@
                             android:layout_height="wrap_content"
                             android:layout_weight=".8"
                             android:orientation="vertical"
-                            android:padding="16dp">
+                            android:paddingBottom="16dp"
+                            android:paddingLeft="4dp"
+                            android:paddingRight="16dp"
+                            android:paddingTop="16dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
