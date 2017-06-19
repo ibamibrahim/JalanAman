@@ -1,4 +1,4 @@
-package id.aicode.jalanaman;
+package id.aicode.jalanaman.activities;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,6 +11,10 @@ import android.view.MenuItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import id.aicode.jalanaman.fragments.EmergencyCallFragment;
+import id.aicode.jalanaman.fragments.MyPlaceTabFragment;
+import id.aicode.jalanaman.R;
+import id.aicode.jalanaman.fragments.RecentTabFragment;
 
 public class MainActivity extends AppCompatActivity {
 

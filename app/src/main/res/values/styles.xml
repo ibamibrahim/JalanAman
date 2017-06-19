@@ -18,9 +18,29 @@
     </style>
 
     <style name="actionbar">
-        <item name="android:background">#e74c3c</item>
+        <item name="android:background">@color/red</item>
         <item name="android:textColor">#fff</item>
         <item name="android:text">Kebakaran di RSUD Tangerang</item>
+    </style>
+
+    <style name="title">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="content" parent="title">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="title_with_label">
+        <item name="android:padding">@dimen/small_space</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">#fff</item>
+    </style>
+
+    <style name="title_with_label.small" parent="title_with_label">
+        <item name="android:textSize">12sp</item>
     </style>
 
 </resources>

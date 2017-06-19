@@ -1,7 +1,9 @@
-package id.aicode.jalanaman;
+package id.aicode.jalanaman.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import id.aicode.jalanaman.R;
 
 public class CommentActivity extends AppCompatActivity {
 

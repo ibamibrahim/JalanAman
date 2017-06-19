@@ -1,16 +1,14 @@
-package id.aicode.jalanaman;
+package id.aicode.jalanaman.fragments;
 
 /**
  * Created by Ibam on 6/15/2017.
  */
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +19,9 @@ import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import id.aicode.jalanaman.R;
+import id.aicode.jalanaman.activities.CommentActivity;
+import id.aicode.jalanaman.activities.MapsActivity;
 
 public class RecentTabFragment extends Fragment {
 
