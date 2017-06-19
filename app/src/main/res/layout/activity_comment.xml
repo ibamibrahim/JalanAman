@@ -1,20 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_comment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/standard_space"
-    android:paddingLeft="@dimen/standard_space"
-    android:paddingRight="@dimen/standard_space"
-    android:paddingTop="@dimen/standard_space"
-    tools:context="id.aicode.jalanaman.activities.CommentActivity">
+    android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
+    <TextView
+        style="@style/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/standard_space"
+        android:text="5 Comments"
+        android:id="@+id/comment_count_activity"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
-    </android.support.v7.widget.RecyclerView>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#c0c0c0"/>
 
-</RelativeLayout>
+    <LinearLayout
+        android:id="@+id/activity_comment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/standard_space"
+        android:paddingLeft="@dimen/standard_space"
+        android:paddingRight="@dimen/standard_space"
+        android:paddingTop="@dimen/standard_space"
+        tools:context="id.aicode.jalanaman.activities.CommentActivity">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+</LinearLayout>
