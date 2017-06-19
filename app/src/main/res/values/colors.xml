@@ -6,6 +6,8 @@
     <color name="colorAccent">#e18419</color>
     <color name="red">#FFE74C3C</color>
     <color name="red_darker">#C0392B</color>
+    <color name="white">#fff</color>
+    <color name="not_that_white">#ecf0f1</color>
     <color name="color_safe">#2ECC71</color>
     <color name="color_alternative_purple">#8E44AD</color>
 </resources>
