@@ -30,7 +30,7 @@
         android:paddingLeft="@dimen/standard_space"
         android:paddingRight="@dimen/standard_space"
         android:paddingTop="@dimen/standard_space"
-        tools:context="id.aicode.jalanaman.activities.CommentActivity">
+        tools:context="id.aicode.jalanaman.comment.CommentActivity">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

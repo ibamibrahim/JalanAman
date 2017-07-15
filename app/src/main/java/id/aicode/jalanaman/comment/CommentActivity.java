@@ -1,4 +1,4 @@
-package id.aicode.jalanaman.activities;
+package id.aicode.jalanaman.comment;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

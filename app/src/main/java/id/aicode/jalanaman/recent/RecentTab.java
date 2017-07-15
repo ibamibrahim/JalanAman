@@ -1,4 +1,4 @@
-package id.aicode.jalanaman.fragments;
+package id.aicode.jalanaman.recent;
 
 /**
  * Created by Ibam on 6/15/2017.
@@ -20,10 +20,10 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.aicode.jalanaman.R;
-import id.aicode.jalanaman.activities.CommentActivity;
+import id.aicode.jalanaman.comment.CommentActivity;
 import id.aicode.jalanaman.activities.MapsActivity;
 
-public class RecentTabFragment extends Fragment {
+public class RecentTab extends Fragment {
 
     @BindView(R.id.maps_button)
     Button show_map;

@@ -1,4 +1,4 @@
-package id.aicode.jalanaman.activities;
+package id.aicode.jalanaman.homepage;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -11,10 +11,10 @@ import android.view.MenuItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import id.aicode.jalanaman.fragments.EmergencyCallFragment;
-import id.aicode.jalanaman.fragments.MyPlaceTabFragment;
+import id.aicode.jalanaman.emergency.EmergencyCall;
+import id.aicode.jalanaman.myplace.MyPlaceTab;
 import id.aicode.jalanaman.R;
-import id.aicode.jalanaman.fragments.RecentTabFragment;
+import id.aicode.jalanaman.recent.RecentTab;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -131,13 +131,13 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch(position){
                 case 0:
-                    MyPlaceTabFragment tab1 = new MyPlaceTabFragment();
+                    MyPlaceTab tab1 = new MyPlaceTab();
                     return tab1;
                 case 1:
-                    RecentTabFragment tab2 = new RecentTabFragment();
+                    RecentTab tab2 = new RecentTab();
                     return tab2;
                 case 2:
-                    EmergencyCallFragment tab3 = new EmergencyCallFragment();
+                    EmergencyCall tab3 = new EmergencyCall();
                     return tab3;
                 default:
                     return null;

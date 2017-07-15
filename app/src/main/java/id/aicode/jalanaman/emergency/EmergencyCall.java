@@ -1,4 +1,4 @@
-package id.aicode.jalanaman.fragments;
+package id.aicode.jalanaman.emergency;
 
 /**
  * Created by Ibam on 6/15/2017.
@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import id.aicode.jalanaman.R;
 
-public class EmergencyCallFragment extends Fragment {
+public class EmergencyCall extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
