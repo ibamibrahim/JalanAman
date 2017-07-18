@@ -22,5 +22,6 @@ public interface ServicesContract {
     interface LocalContract {
         void makeCall(String number);
         void getPictureFromGallery();
+        void checkSession();
     }
 }

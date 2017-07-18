@@ -14,4 +14,9 @@ public class LocalServices implements ServicesContract.LocalContract{
     public void getPictureFromGallery() {
 
     }
+
+    @Override
+    public void checkSession() {
+
+    }
 }

@@ -1,4 +1,4 @@
-package id.aicode.jalanaman.recent;
+package id.aicode.jalanaman.landingpage;
 
 import id.aicode.jalanaman.BaseModel;
 import id.aicode.jalanaman.BaseView;
@@ -7,7 +7,7 @@ import id.aicode.jalanaman.BaseView;
  * Created by Ibam on 7/16/2017.
  */
 
-public class RecentPresenter implements RecentContract.Presenter {
+public class LandingPagePresenter implements LandingPageContract.Presenter {
     @Override
     public void setView(BaseView view) {
 

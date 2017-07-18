@@ -23,6 +23,9 @@
         <item name="android:text">Kebakaran di RSUD Tangerang</item>
     </style>
 
+    <style name="header">
+        <item name="android:textSize">20sp</item>
+    </style>
     <style name="title">
         <item name="android:textSize">12sp</item>
     </style>

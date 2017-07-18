@@ -16,7 +16,7 @@ import id.aicode.jalanaman.myplace.MyPlaceTab;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.recent.RecentTab;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HomePageContract.View{
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide

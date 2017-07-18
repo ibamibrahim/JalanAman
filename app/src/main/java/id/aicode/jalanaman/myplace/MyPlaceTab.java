@@ -29,7 +29,7 @@ import butterknife.ButterKnife;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.homepage.MainActivity;
 
-public class MyPlaceTab extends Fragment {
+public class MyPlaceTab extends Fragment implements MyPlaceContract.View {
 
     @BindView(R.id.add_place)
     FloatingActionButton floatingActionButton;

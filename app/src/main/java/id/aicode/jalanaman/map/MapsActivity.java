@@ -1,4 +1,4 @@
-package id.aicode.jalanaman.activities;
+package id.aicode.jalanaman.map;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +12,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import id.aicode.jalanaman.R;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, MapsContract.View {
 
     private GoogleMap mMap;
 

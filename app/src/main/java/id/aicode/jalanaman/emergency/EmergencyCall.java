@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import id.aicode.jalanaman.R;
 
-public class EmergencyCall extends Fragment {
+public class EmergencyCall extends Fragment implements EmergencyContract.View{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

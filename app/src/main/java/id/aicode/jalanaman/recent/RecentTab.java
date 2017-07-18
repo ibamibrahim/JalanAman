@@ -21,9 +21,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.comment.CommentActivity;
-import id.aicode.jalanaman.activities.MapsActivity;
+import id.aicode.jalanaman.map.MapsActivity;
 
-public class RecentTab extends Fragment {
+public class RecentTab extends Fragment implements RecentContract.View{
 
     @BindView(R.id.maps_button)
     Button show_map;

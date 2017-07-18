@@ -1,42 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
-        style="@style/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/standard_space"
-        android:text="5 Comments"
-        android:id="@+id/comment_count_activity"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#c0c0c0"/>
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/activity_comment"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/standard_space"
-        android:paddingLeft="@dimen/standard_space"
-        android:paddingRight="@dimen/standard_space"
-        android:paddingTop="@dimen/standard_space"
-        tools:context="id.aicode.jalanaman.comment.CommentActivity">
+        android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
+        <TextView
+            android:id="@+id/comment_count_activity"
+            style="@style/title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="@dimen/standard_space"
+            android:text="5 Comments"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
-        </android.support.v7.widget.RecyclerView>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#c0c0c0"/>
+
+        <LinearLayout
+            android:id="@+id/activity_comment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/standard_space"
+            android:paddingLeft="@dimen/standard_space"
+            android:paddingRight="@dimen/standard_space"
+            android:paddingTop="@dimen/standard_space"
+            tools:context="id.aicode.jalanaman.comment.CommentActivity">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/comment_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/comment_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="8dp"
+            android:layout_weight=".5"
+            android:background="#DCE3E5"
+            android:hint="Write a comment..."
+            android:padding="12dp"/>
+
+        <Button
+            android:id="@+id/comment_post"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1"
+            android:background="@drawable/button_flat_blue"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="Send"
+            android:textColor="#fff"/>
 
     </LinearLayout>
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
