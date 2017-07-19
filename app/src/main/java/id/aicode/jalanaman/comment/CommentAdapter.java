@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -19,35 +20,32 @@ import id.aicode.jalanaman.R;
  * Created by Ibam on 7/18/2017.
  */
 
-public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder>{
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
     Context context;
     List<CommentModel> commentList;
 
-    public CommentAdapter(Context context, List<CommentModel> commentList){
+    public CommentAdapter(Context context, List<CommentModel> commentList) {
         this.context = context;
         this.commentList = commentList;
     }
 
-    public CommentAdapter(Context c){
+    public CommentAdapter(Context c) {
         this.context = c;
+        commentList = new ArrayList<>();
     }
 
-    public Context getContext(){
+    public Context getContext() {
         return this.context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_comment, parent, false);
 
-        // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.item_comment, parent, false);
 
-        // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
-        return viewHolder;
+        return new CommentAdapter.ViewHolder(view);
     }
 
     @Override
@@ -59,29 +57,36 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.commentPoster.setText(comment.getTimeStamp());
     }
 
-    public void setDataset(List<CommentModel> dataset){
+    public void setDataset(List<CommentModel> dataset) {
         this.commentList = dataset;
+    }
+
+    public void addDataSet(List<CommentModel> dataSet) {
+        this.commentList.addAll(dataSet);
         notifyDataSetChanged();
     }
+
+    public void addData(CommentModel data) {
+        this.commentList.add(data);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemCount() {
         return commentList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.content_comment)
         public TextView commentContent;
-
-        @BindView(R.id.timeposted_comment)
         public TextView commentTime;
-
-        @BindView(R.id.poster_comment)
         public TextView commentPoster;
 
-        public ViewHolder(View view){
+        public ViewHolder(View view) {
             super(view);
-            ButterKnife.bind(this, view);
+            commentContent = (TextView) view.findViewById(R.id.content_comment);
+            commentTime = (TextView) view.findViewById(R.id.timeposted_comment);
+            commentPoster = (TextView) view.findViewById(R.id.timeposted_comment);
         }
     }
 }

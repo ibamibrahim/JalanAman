@@ -4,45 +4,47 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
 
 public class CommentActivity extends AppCompatActivity implements CommentContract.View, View.OnClickListener {
-
     @BindView(R.id.comment_recyclerview)
     RecyclerView recyclerView;
-
     @BindView(R.id.comment_post)
     Button mButton;
-
     @BindView(R.id.comment_input)
     EditText inputComment;
-
     CommentActivityPresenter presenter;
     LinearLayoutManager mLinear;
+    CommentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment);
+        ButterKnife.bind(this);
         mButton.setOnClickListener(this);
         initPresenter();
         initRecyclerView();
-
-        presenter.getCommentList();
     }
 
     private void initRecyclerView() {
+        adapter = new CommentAdapter(this, new ArrayList<CommentModel>(0));
         mLinear = new LinearLayoutManager(this);
-        recyclerView = new RecyclerView(this);
+        mLinear.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLinear);
+        recyclerView.setAdapter(adapter);
+        presenter.getCommentList();
     }
 
     private void initPresenter() {
@@ -64,10 +66,8 @@ public class CommentActivity extends AppCompatActivity implements CommentContrac
     }
 
     public void updateCommentList(List<CommentModel> comments) {
-        CommentAdapter adapter = new CommentAdapter(this);
         adapter.setDataset(comments);
-
-        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     public void commentFailed() {

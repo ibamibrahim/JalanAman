@@ -1,6 +1,11 @@
 package id.aicode.jalanaman.comment;
 
+import android.util.Log;
+
 import org.w3c.dom.Comment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import id.aicode.jalanaman.BaseModel;
 import id.aicode.jalanaman.BaseView;
@@ -39,6 +44,16 @@ public class CommentActivityPresenter implements CommentContract.Presenter {
     }
 
     public void getCommentList(){
-
+        List<CommentModel> commentModels = new ArrayList<>();
+        CommentModel commentModel;
+        for(int i = 0; i < 10; i++){
+            commentModel = new CommentModel();
+            commentModel.setComment("comment " + i);
+            commentModel.setUsername("username " + i);
+            commentModel.setTimeStamp("timestamp" + i);
+            commentModels.add(commentModel);
+        }
+        Log.d("COMMENT MODELS SIZE", commentModels.size()+"");
+        mView.updateCommentList(commentModels);
     }
 }
