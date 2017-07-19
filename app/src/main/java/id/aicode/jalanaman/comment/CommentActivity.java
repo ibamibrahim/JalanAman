@@ -34,8 +34,12 @@ public class CommentActivity extends AppCompatActivity implements CommentContrac
         setContentView(R.layout.activity_comment);
         ButterKnife.bind(this);
         mButton.setOnClickListener(this);
+
         initPresenter();
         initRecyclerView();
+
+        presenter.getCommentList();
+
     }
 
     private void initRecyclerView() {
@@ -44,7 +48,6 @@ public class CommentActivity extends AppCompatActivity implements CommentContrac
         mLinear.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLinear);
         recyclerView.setAdapter(adapter);
-        presenter.getCommentList();
     }
 
     private void initPresenter() {

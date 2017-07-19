@@ -1,5 +1,7 @@
 package id.aicode.jalanaman.emergency;
 
+import java.util.List;
+
 import id.aicode.jalanaman.BasePresenter;
 import id.aicode.jalanaman.BaseView;
 
@@ -9,5 +11,7 @@ import id.aicode.jalanaman.BaseView;
 
 public class EmergencyContract {
     interface Presenter extends BasePresenter {}
-    interface View extends BaseView {}
+    interface View extends BaseView {
+        void updateEmergencyCallList(List<EmergencyCallModel> models);
+    }
 }
