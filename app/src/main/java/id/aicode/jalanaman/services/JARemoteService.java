@@ -1,12 +1,18 @@
 package id.aicode.jalanaman.services;
 
+import java.util.List;
+
 import id.aicode.jalanaman.services.models.LoginData;
-import id.aicode.jalanaman.services.models.user.UserResponse;
-import retrofit2.Call;
+import id.aicode.jalanaman.services.models.RegisterData;
+import id.aicode.jalanaman.services.models.event.EventResponse;
+import id.aicode.jalanaman.services.models.login.LoginResponse;
+import id.aicode.jalanaman.services.models.profile.ProfileResponse;
+import id.aicode.jalanaman.services.models.register.RegisterResponse;
 import retrofit2.http.Body;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -16,5 +22,16 @@ import rx.Observable;
 public interface JARemoteService {
 
     @POST("/api/v1/login/")
-    Observable<UserResponse> login(@Body LoginData data);
+    Observable<LoginResponse> login(@Body LoginData data);
+
+    @POST("/api/v1/register/")
+    @FormUrlEncoded
+    Observable<RegisterResponse> register(@Body RegisterData data);
+
+    @GET("/event/")
+    Observable<List<EventResponse>> getEvent(@Header("Authorization") String token);
+
+    @GET("/user/profile")
+    Observable<ProfileResponse> getProfile(@Header("Authorization") String token);
+
 }

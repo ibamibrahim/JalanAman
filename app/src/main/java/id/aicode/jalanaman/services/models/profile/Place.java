@@ -1,5 +1,5 @@
 
-package id.aicode.jalanaman.services.models.user;
+package id.aicode.jalanaman.services.models.profile;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

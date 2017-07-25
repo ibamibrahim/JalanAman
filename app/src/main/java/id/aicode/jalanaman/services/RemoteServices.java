@@ -4,10 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 
 import id.aicode.jalanaman.services.models.LoginData;
-import id.aicode.jalanaman.services.models.user.UserResponse;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import id.aicode.jalanaman.services.models.login.LoginResponse;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -27,7 +24,7 @@ public class RemoteServices implements ServicesContract.RemoteContract {
     }
 
     @Override
-    public Observable<UserResponse> login(String email, String password) {
+    public Observable<LoginResponse> login(String email, String password) {
         initRetrofit();
         return retrofit.login(new LoginData(email, password));
     }

@@ -1,12 +1,9 @@
 package id.aicode.jalanaman.login;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import id.aicode.jalanaman.BaseModel;
 import id.aicode.jalanaman.BaseView;
 import id.aicode.jalanaman.services.RemoteServices;
-import id.aicode.jalanaman.services.models.user.UserResponse;
+import id.aicode.jalanaman.services.models.login.LoginResponse;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -51,7 +48,7 @@ public class LoginPresenter implements LoginContract.Presenter {
         remoteServices.login(email, password)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<UserResponse>() {
+                .subscribe(new Subscriber<LoginResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -63,8 +60,8 @@ public class LoginPresenter implements LoginContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(UserResponse userResponse) {
-                        if(userResponse.getUser() != null){
+                    public void onNext(LoginResponse loginResponse) {
+                        if(loginResponse.getUser() != null){
                             mView.loginSuccess();
                         } else {
                             mView.loginFailed();

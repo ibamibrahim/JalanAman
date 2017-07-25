@@ -3,7 +3,7 @@ package id.aicode.jalanaman.services;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 
-import id.aicode.jalanaman.services.models.user.UserResponse;
+import id.aicode.jalanaman.services.models.login.LoginResponse;
 import rx.Observable;
 
 /**
@@ -13,7 +13,7 @@ import rx.Observable;
 public interface ServicesContract {
 
     interface RemoteContract {
-        Observable<UserResponse> login(String email, String password);
+        Observable<LoginResponse> login(String email, String password);
         void register(String email, String password);
         void getRecentDangers();
         void addMyPlace(String type, String name, String pointOne, @Nullable String pointTwo);
