@@ -9,5 +9,10 @@ import id.aicode.jalanaman.BaseView;
 
 public class RecentContract {
     interface Presenter extends BasePresenter {}
-    interface View extends BaseView {}
+    interface View extends BaseView {
+        void showPhoto(String id);
+        void showComment(String commentId);
+        void showMaps(String longitude, String lantitude);
+        void reportDanger();
+    }
 }

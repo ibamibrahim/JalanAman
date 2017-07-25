@@ -16,7 +16,17 @@ public class LocalServices implements ServicesContract.LocalContract{
     }
 
     @Override
-    public void checkSession() {
+    public String getToken() {
+        return null;
+    }
+
+    @Override
+    public boolean isLoggedIn() {
+        return false;
+    }
+
+    @Override
+    public void saveToken() {
 
     }
 }

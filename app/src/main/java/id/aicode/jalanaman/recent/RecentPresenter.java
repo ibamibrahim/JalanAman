@@ -8,9 +8,12 @@ import id.aicode.jalanaman.BaseView;
  */
 
 public class RecentPresenter implements RecentContract.Presenter {
+
+    private RecentContract.View mView;
+
     @Override
     public void setView(BaseView view) {
-
+        this.mView = (RecentContract.View) mView;
     }
 
     @Override

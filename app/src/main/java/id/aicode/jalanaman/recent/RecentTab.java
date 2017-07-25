@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,28 +24,15 @@ import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.comment.CommentActivity;
 import id.aicode.jalanaman.map.MapsActivity;
 
-public class RecentTab extends Fragment implements RecentContract.View{
-
-    @BindView(R.id.maps_button)
-    Button show_map;
-
-    @BindView(R.id.gambar)
-    ImageView show_photo;
-
-    @BindView(R.id.komen)
-    ImageView post_comment;
+public class RecentTab extends Fragment implements RecentContract.View {
 
     @BindView(R.id.report_danger)
     FloatingActionButton fab;
 
-    /**
-     * TODO
-     * Tambahin:
-     * - layout post kejadian baru (dialog biasa)
-     * x show photo
-     * - layout post comment (bottom sliding up)
-     * - direct call
-     */
+    @BindView(R.id.recent_recyclerView)
+    RecyclerView recyclerView;
+
+    RecentPresenter mPresenter;
 
     @Override
     @SuppressWarnings("Deprecation")
@@ -52,57 +40,50 @@ public class RecentTab extends Fragment implements RecentContract.View{
         View view = inflater.inflate(R.layout.tab_recent, container, false);
         ButterKnife.bind(this, view);
 
-        show_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MapsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        show_photo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
-                final View dialogView = getActivity().getLayoutInflater().inflate(R.layout
-                                .dialog_image,
-                        null);
-
-                dialogBuilder.setView(dialogView);
-                AlertDialog dialog = dialogBuilder.create();
-                Window window = dialog.getWindow();
-                WindowManager.LayoutParams param = window.getAttributes();
-                param.x = 450;
-                window.setAttributes(param);
-                dialog.show();
-            }
-        });
-
-        post_comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CommentActivity.class);
-                startActivity(intent);
-            }
-        });
-
         fab.setBackgroundColor(getActivity().getResources().getColor(R.color.red));
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
-                final View dialogView = getActivity().getLayoutInflater().inflate(R.layout
-                                .dialog_report,
-                        null);
-
-                dialogBuilder.setView(dialogView);
-                AlertDialog dialog = dialogBuilder.create();
-                Window window = dialog.getWindow();
-                WindowManager.LayoutParams param = window.getAttributes();
-                param.x = 450;
-                dialog.show();
-            }
-        });
+        mPresenter = new RecentPresenter();
+        mPresenter.setView(this);
         return view;
+    }
+
+    public void showPhoto(String id) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+        final View dialogView = getActivity().getLayoutInflater().inflate(R.layout
+                        .dialog_image,
+                null);
+
+        dialogBuilder.setView(dialogView);
+        AlertDialog dialog = dialogBuilder.create();
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams param = window.getAttributes();
+        param.x = 450;
+        window.setAttributes(param);
+        dialog.show();
+    }
+
+    public void showComment(String commentId) {
+
+    }
+
+    public void loadRecentDangers(){
+
+    }
+
+    public void showMaps(String longitude, String latitude) {
+
+    }
+
+    public void reportDanger() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+        final View dialogView = getActivity().getLayoutInflater().inflate(R.layout
+                        .dialog_report,
+                null);
+
+        dialogBuilder.setView(dialogView);
+        AlertDialog dialog = dialogBuilder.create();
+        Window window = dialog.getWindow();
+        WindowManager.LayoutParams param = window.getAttributes();
+        param.x = 450;
+        dialog.show();
     }
 }
