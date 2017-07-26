@@ -11,6 +11,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import id.aicode.jalanaman.R;
+import id.aicode.jalanaman.services.LocalServices;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, MapsContract.View {
 
@@ -27,6 +28,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         getSupportActionBar().setTitle("Kebakaran di RSUD Tangerang");
         mapFragment.getMapAsync(this);
+        LocalServices.isLoggedIn(getApplicationContext());
     }
 
 

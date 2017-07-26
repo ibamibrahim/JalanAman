@@ -15,6 +15,7 @@ import id.aicode.jalanaman.emergency.EmergencyCall;
 import id.aicode.jalanaman.myplace.MyPlaceTab;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.recent.RecentTab;
+import id.aicode.jalanaman.services.LocalServices;
 
 public class MainActivity extends AppCompatActivity implements HomePageContract.View{
 
@@ -74,6 +75,8 @@ public class MainActivity extends AppCompatActivity implements HomePageContract.
             }
         });
         setTabIcon();
+
+        //LocalServices.isLoggedIn(getApplicationContext());
     }
 
     protected void setTabIcon(){

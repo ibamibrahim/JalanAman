@@ -1,5 +1,7 @@
 package id.aicode.jalanaman.login;
 
+import android.content.Context;
+
 import id.aicode.jalanaman.BasePresenter;
 import id.aicode.jalanaman.BaseView;
 
@@ -9,7 +11,7 @@ import id.aicode.jalanaman.BaseView;
 
 public class LoginContract {
     interface Presenter extends BasePresenter {
-        void login(String password, String email);
+        void login(String password, String email, Context context);
     }
 
     interface View extends BaseView {

@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.comment.CommentAdapter;
 import id.aicode.jalanaman.comment.CommentModel;
+import id.aicode.jalanaman.services.LocalServices;
 
 /**
  * Created by Ibam on 7/19/2017.
@@ -38,8 +39,6 @@ public class EmergencyCallAdapter extends RecyclerView.Adapter<EmergencyCallAdap
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_tab_emergency, parent, false);
-
-
         return new EmergencyCallAdapter.ViewHolder(view);
     }
 
@@ -54,6 +53,10 @@ public class EmergencyCallAdapter extends RecyclerView.Adapter<EmergencyCallAdap
 
         Drawable icon = context.getDrawable(model.getIntImage());
         holder.emergencyIcon.setImageDrawable(icon);
+
+        holder.emergencyName.setOnClickListener(new CallListener(context, model.getEmergencyNumber()));
+        holder.emergencyIcon.setOnClickListener(new CallListener(context, model.getEmergencyNumber()));
+        holder.emergencyNumber.setOnClickListener(new CallListener(context, model.getEmergencyNumber()));
     }
 
     @Override
@@ -83,6 +86,25 @@ public class EmergencyCallAdapter extends RecyclerView.Adapter<EmergencyCallAdap
         public ViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
+        }
+    }
+
+    public class CallListener implements View.OnClickListener{
+
+        Context context;
+        String number;
+        public CallListener(Context context, String number){
+            this.context = context;
+            this.number = number;
+        }
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.name_emergency:
+                case R.id.phone_emergency:
+                case R.id.emergency_prof_pic:
+                    LocalServices.makeCall(context, number);
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
+import id.aicode.jalanaman.services.LocalServices;
 
 public class CommentActivity extends AppCompatActivity implements CommentContract.View, View.OnClickListener {
     @BindView(R.id.comment_recyclerview)
@@ -39,6 +40,7 @@ public class CommentActivity extends AppCompatActivity implements CommentContrac
 
         presenter.getCommentList();
 
+        LocalServices.isLoggedIn(getApplicationContext());
     }
 
     private void initRecyclerView() {

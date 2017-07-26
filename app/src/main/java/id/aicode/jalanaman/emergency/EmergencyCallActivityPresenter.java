@@ -9,6 +9,7 @@ import java.util.List;
 import id.aicode.jalanaman.BaseModel;
 import id.aicode.jalanaman.BaseView;
 import id.aicode.jalanaman.R;
+import id.aicode.jalanaman.services.LocalServices;
 
 /**
  * Created by Ibam on 7/16/2017.
@@ -66,5 +67,9 @@ public class EmergencyCallActivityPresenter implements EmergencyContract.Present
         result[4] = R.drawable.emer_sos;
 
         return result;
+    }
+
+    public void logOut(Context context){
+        LocalServices.logOut(context);
     }
 }

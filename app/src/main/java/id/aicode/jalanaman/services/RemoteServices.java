@@ -3,7 +3,10 @@ package id.aicode.jalanaman.services;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 
+import java.util.List;
+
 import id.aicode.jalanaman.services.models.LoginData;
+import id.aicode.jalanaman.services.models.event.EventResponse;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -35,8 +38,9 @@ public class RemoteServices implements ServicesContract.RemoteContract {
     }
 
     @Override
-    public void getRecentDangers() {
-
+    public Observable<List<EventResponse>> getRecentDangers(String token) {
+        initRetrofit();
+        return retrofit.getEvent(token);
     }
 
     @Override

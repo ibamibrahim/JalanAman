@@ -1,6 +1,7 @@
 package id.aicode.jalanaman.login;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import butterknife.OnClick;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
 import id.aicode.jalanaman.homepage.MainActivity;
+import id.aicode.jalanaman.services.LocalServices;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -41,6 +43,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
         loginPresenter = new LoginPresenter();
         loginPresenter.setView(this);
+
+        inputEmail.setText("ibrahim52@ui.ac.id");
+        inputPassword.setText("ibamibrahim");
+
+        if(LocalServices.isLoggedInBool(getApplicationContext())){
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -63,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         // show progressDialog
         dialog = Helper.showProgressDialog(this, "Loading..");
         dialog.show();
-        loginPresenter.login(email, password);
+        loginPresenter.login(email, password, getApplicationContext());
     }
 
     @Override

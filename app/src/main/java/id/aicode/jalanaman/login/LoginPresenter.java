@@ -1,7 +1,11 @@
 package id.aicode.jalanaman.login;
 
+import android.content.Context;
+import android.util.Log;
+
 import id.aicode.jalanaman.BaseModel;
 import id.aicode.jalanaman.BaseView;
+import id.aicode.jalanaman.services.LocalServices;
 import id.aicode.jalanaman.services.RemoteServices;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
 import rx.Subscriber;
@@ -42,7 +46,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void login(String password, String email) {
+    public void login(String password, String email, final Context context) {
         // connect to services
         // kalo sukses, post event bus dan mView.loginsukses
         remoteServices.login(email, password)
@@ -63,10 +67,17 @@ public class LoginPresenter implements LoginContract.Presenter {
                     public void onNext(LoginResponse loginResponse) {
                         if(loginResponse.getUser() != null){
                             mView.loginSuccess();
+                            saveToken(loginResponse.getToken(), context);
                         } else {
                             mView.loginFailed();
                         }
                     }
                 });
     };
+
+    private void saveToken(String token, Context context){
+        token = "JWT " + token;
+        LocalServices.saveToken(context, token);
+        Log.d("LoginPresenter", token);
+    }
 }

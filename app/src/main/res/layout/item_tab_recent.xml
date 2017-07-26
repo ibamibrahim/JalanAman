@@ -51,7 +51,7 @@
 
                         <TextView
                             android:id="@+id/poster_item_recent"
-                            style="@style/poster_jalanAman"
+                            style="@style/poster_recent_danger"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="\@JalanAman"/>
@@ -84,6 +84,7 @@
 
 
                         <ImageView
+                            android:id="@+id/icon_comment"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:layout_marginRight="8dp"

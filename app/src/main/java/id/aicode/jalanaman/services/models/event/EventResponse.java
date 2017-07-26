@@ -28,6 +28,12 @@ public class EventResponse {
     @Expose
     private String updatedAt;
 
+    public String getPoster() {
+        return poster;
+    }
+
+    private String poster;
+
     public Integer getId() {
         return id;
     }

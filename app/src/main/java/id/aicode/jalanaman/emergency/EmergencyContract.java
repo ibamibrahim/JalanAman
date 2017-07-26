@@ -1,5 +1,7 @@
 package id.aicode.jalanaman.emergency;
 
+import android.content.Context;
+
 import java.util.List;
 
 import id.aicode.jalanaman.BasePresenter;
@@ -10,7 +12,10 @@ import id.aicode.jalanaman.BaseView;
  */
 
 public class EmergencyContract {
-    interface Presenter extends BasePresenter {}
+    interface Presenter extends BasePresenter {
+        void logOut(Context context);
+    }
+
     interface View extends BaseView {
         void updateEmergencyCallList(List<EmergencyCallModel> models);
     }

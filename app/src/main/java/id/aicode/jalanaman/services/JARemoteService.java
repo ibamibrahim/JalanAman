@@ -28,7 +28,7 @@ public interface JARemoteService {
     @FormUrlEncoded
     Observable<RegisterResponse> register(@Body RegisterData data);
 
-    @GET("/event/")
+    @GET("/api/v1/event")
     Observable<List<EventResponse>> getEvent(@Header("Authorization") String token);
 
     @GET("/user/profile")
