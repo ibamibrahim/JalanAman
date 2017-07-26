@@ -5,9 +5,7 @@ package id.aicode.jalanaman.recent;
  */
 
 import android.app.ProgressDialog;
-import android.app.usage.UsageEvents;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -20,7 +18,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import java.util.List;
 
@@ -28,16 +25,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.aicode.jalanaman.R;
-import id.aicode.jalanaman.comment.CommentActivity;
 import id.aicode.jalanaman.helper.Helper;
-import id.aicode.jalanaman.homepage.MainActivity;
-import id.aicode.jalanaman.map.MapsActivity;
 import id.aicode.jalanaman.services.models.event.EventResponse;
 
 public class RecentTab extends Fragment implements RecentContract.View {
 
     @BindView(R.id.report_danger)
-    FloatingActionButton fab;
+    Button mButton;
 
     @BindView(R.id.recent_recyclerView)
     RecyclerView recyclerView;
@@ -52,8 +46,6 @@ public class RecentTab extends Fragment implements RecentContract.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.tab_recent, container, false);
         ButterKnife.bind(this, view);
-
-        fab.setBackgroundColor(getActivity().getResources().getColor(R.color.red));
 
         return view;
     }

@@ -7,15 +7,14 @@
     android:layout_height="match_parent"
     android:background="#2c3e50">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_place"
+    <!--<android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
         android:src="@drawable/ic_action_name"
         android:textAlignment="center"
-        />
+        />-->
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -27,15 +26,34 @@
                       android:background="#2c3e50"
                       android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#27ae60"
-                android:padding="12dp"
-                android:text="My places"
-                android:textColor="#FFFFFF"
-                android:textSize="15sp"/>
+                android:orientation="horizontal"
+                android:paddingBottom="6dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="6dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:text="My places"
+                    android:textColor="#FFFFFF"
+                    android:textSize="15sp"/>
+
+                <Button
+                    android:id="@+id/add_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/button_small_green"
+                    android:text="add"
+                    android:textColor="#fff"/>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -194,14 +212,17 @@
                             android:textSize="12sp"
                             android:textStyle="bold"/>
 
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_weight=".5"
                             android:background="#D24737"
                             android:paddingBottom="8dp"
                             android:paddingLeft="16dp"
                             android:paddingRight="16dp"
                             android:paddingTop="8dp"
-                            android:text="20 menit yang lalu" android:textAlignment="textEnd"
+                            android:text="20 menit yang lalu"
+                            android:textAlignment="textEnd"
                             android:textColor="#fff"
                             android:textSize="12sp"
                             android:textStyle="bold"/>
