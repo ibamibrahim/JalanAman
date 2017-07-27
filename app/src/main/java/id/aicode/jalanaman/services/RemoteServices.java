@@ -6,8 +6,10 @@ import android.support.annotation.Nullable;
 import java.util.List;
 
 import id.aicode.jalanaman.services.models.LoginData;
+import id.aicode.jalanaman.services.models.RegisterData;
 import id.aicode.jalanaman.services.models.event.EventResponse;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
+import id.aicode.jalanaman.services.models.register.RegisterResponse;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -33,8 +35,9 @@ public class RemoteServices implements ServicesContract.RemoteContract {
     }
 
     @Override
-    public void register(String email, String password) {
-
+    public Observable<RegisterResponse> register(RegisterData data) {
+        initRetrofit();
+        return retrofit.register(data);
     }
 
     @Override

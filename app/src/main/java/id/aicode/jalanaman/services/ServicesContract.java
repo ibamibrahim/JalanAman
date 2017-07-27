@@ -5,8 +5,10 @@ import android.support.annotation.Nullable;
 
 import java.util.List;
 
+import id.aicode.jalanaman.services.models.RegisterData;
 import id.aicode.jalanaman.services.models.event.EventResponse;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
+import id.aicode.jalanaman.services.models.register.RegisterResponse;
 import rx.Observable;
 
 /**
@@ -17,7 +19,7 @@ public interface ServicesContract {
 
     interface RemoteContract {
         Observable<LoginResponse> login(String email, String password);
-        void register(String email, String password);
+        Observable<RegisterResponse> register(RegisterData data);
         Observable<List<EventResponse>> getRecentDangers(String token);
         void addMyPlace(String type, String name, String pointOne, @Nullable String pointTwo);
         void getComments(String eventId);

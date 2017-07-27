@@ -58,4 +58,17 @@
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"/>
 
+    <TextView
+        android:id="@+id/sign_up_now"
+        android:layout_marginTop="@dimen/standard_space"
+        android:textColor="@color/colorPrimary"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_white"
+        android:text="Sign up now"/>
+
 </LinearLayout>

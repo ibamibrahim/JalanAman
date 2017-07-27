@@ -19,6 +19,7 @@ import id.aicode.jalanaman.BuildConfig;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
 import id.aicode.jalanaman.homepage.MainActivity;
+import id.aicode.jalanaman.register.RegisterActivity;
 import id.aicode.jalanaman.services.LocalServices;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
@@ -31,6 +32,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @BindView(R.id.password_input)
     EditText inputPassword;
+
+    @BindView(R.id.sign_up_now)
+    TextView signUpNow;
 
     LoginPresenter loginPresenter;
     ProgressDialog dialog;
@@ -67,11 +71,17 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @OnClick(R.id.login_button)
     public void buttonLoginClicked() {
-        Log.d(TAG, "ogin with email");
+        Log.d(TAG, "Login with email");
         String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();
         Log.d(TAG, email + " " + password);
         loginWithEmail(email, password);
+    }
+
+    @OnClick(R.id.sign_up_now)
+    public void signUpNowCliked(){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     @Override

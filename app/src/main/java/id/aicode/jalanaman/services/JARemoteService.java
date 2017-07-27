@@ -25,7 +25,6 @@ public interface JARemoteService {
     Observable<LoginResponse> login(@Body LoginData data);
 
     @POST("/api/v1/register/")
-    @FormUrlEncoded
     Observable<RegisterResponse> register(@Body RegisterData data);
 
     @GET("/api/v1/event")
