@@ -1,5 +1,6 @@
 package id.aicode.jalanaman.map;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -11,26 +12,42 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import id.aicode.jalanaman.R;
+import id.aicode.jalanaman.helper.Helper;
 import id.aicode.jalanaman.services.LocalServices;
+import id.aicode.jalanaman.services.models.event.EventResponse;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, MapsContract.View {
 
     private GoogleMap mMap;
-
+    EventResponse eventResponse;
+    String eventName;
+    double lat;
+    double lang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.MapTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        getIntentData();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
-        getSupportActionBar().setTitle("Kebakaran di RSUD Tangerang");
+        getSupportActionBar().setTitle(eventName);
         mapFragment.getMapAsync(this);
         LocalServices.isLoggedIn(getApplicationContext());
     }
 
+    private void getIntentData(){
+        Intent intent = getIntent();
+        try {
+            eventName = intent.getStringExtra("name");
+            lat = intent.getDoubleExtra("lat", 0.0);
+            lang = intent.getDoubleExtra("lang", 0.0);
+        } catch (Exception e){
+            Helper.createToast(getApplicationContext(), e.getMessage());
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -46,8 +63,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-6.169933, 106.635668);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Kebakaran di RSUD Tangerang"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng sydney = new LatLng(lat, lang);
+        mMap.addMarker(new MarkerOptions().position(sydney).title(eventName));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 14));
     }
 }

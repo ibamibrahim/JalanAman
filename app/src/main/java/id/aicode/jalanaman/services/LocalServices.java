@@ -76,5 +76,4 @@ public class LocalServices {
         isLoggedIn(context);
     }
 
-
 }

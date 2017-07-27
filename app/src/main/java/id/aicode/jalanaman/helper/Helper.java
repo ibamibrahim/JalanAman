@@ -2,20 +2,25 @@ package id.aicode.jalanaman.helper;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.LayoutInflaterFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import id.aicode.jalanaman.R;
+import id.aicode.jalanaman.map.MapsActivity;
+import id.aicode.jalanaman.services.models.event.EventResponse;
 
 /**
  * Created by Ibam on 7/16/2017.
@@ -46,13 +51,16 @@ public class Helper {
         return progressDialog;
     }
 
-    public static void showPhoto(Context context, String url) {
+    public static void showPhoto(Context context, EventResponse response) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View dialogView = inflater.inflate(R.layout.dialog_image,  null);
+        View dialogView = inflater.inflate(R.layout.dialog_image, null);
+
+        TextView title = (TextView) dialogView.findViewById(R.id.textView7);
+        title.setText(response.getTitle());
         ImageView imageView = (ImageView) dialogView.findViewById(R.id.big_image_recent);
-        Picasso.with(context).load(url).into(imageView);
+        Picasso.with(context).load(response.getPhotoUrl()).into(imageView);
 
         dialogBuilder.setView(dialogView);
 
@@ -63,4 +71,16 @@ public class Helper {
         window.setAttributes(param);
         dialog.show();
     }
+
+    public static void showMaps(Context context, EventResponse response) {
+        Intent intent = new Intent(context, MapsActivity.class);
+        double lat = Double.parseDouble(response.getPointLat());
+        double lang = Double.parseDouble(response.getPointLang());
+        Log.d("LatLang", lat+","+lang);
+        intent.putExtra("lat", lat);
+        intent.putExtra("lang", lang);
+        intent.putExtra("name", response.getTitle());
+        context.startActivity(intent);
+    }
+
 }

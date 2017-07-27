@@ -6,6 +6,7 @@ package id.aicode.jalanaman.recent;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
+import id.aicode.jalanaman.map.MapsActivity;
 import id.aicode.jalanaman.services.models.event.EventResponse;
 
 public class RecentTab extends Fragment implements RecentContract.View {
@@ -78,7 +80,7 @@ public class RecentTab extends Fragment implements RecentContract.View {
     }
 
     public void loadRecentDangers(List<EventResponse> list) {
-        adapter = new RecentEventAdapter(getActivity(), list);
+        adapter = new RecentEventAdapter(getContext(), list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
@@ -87,10 +89,6 @@ public class RecentTab extends Fragment implements RecentContract.View {
     @Override
     public void loadRecentDangersFailed(String message) {
         Helper.createToast(getContext(), "Loading Recent Dangers failed! " + message);
-    }
-
-    public void showMaps(String longitude, String latitude) {
-
     }
 
     @OnClick(R.id.report_danger)

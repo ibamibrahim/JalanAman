@@ -19,7 +19,6 @@ public class RecentContract {
     interface View extends BaseView {
         void showPhoto(String id);
         void showComment(String commentId);
-        void showMaps(String longitude, String lantitude);
         void reportDanger();
         void loadRecentDangers(List<EventResponse> list);
         void loadRecentDangersFailed(String message);

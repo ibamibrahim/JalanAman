@@ -3,6 +3,7 @@ package id.aicode.jalanaman.login;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import id.aicode.jalanaman.BuildConfig;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
 import id.aicode.jalanaman.homepage.MainActivity;
@@ -44,24 +46,27 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         loginPresenter = new LoginPresenter();
         loginPresenter.setView(this);
 
-        inputEmail.setText("ibrahim52@ui.ac.id");
-        inputPassword.setText("ibamibrahim");
+        /** for debugging purpose*/
+        if (BuildConfig.BUILD_TYPE.equals("debug")) {
+            inputEmail.setText("ibrahim52@ui.ac.id");
+            inputPassword.setText("ibamibrahim");
+        }
 
-        if(LocalServices.isLoggedInBool(getApplicationContext())){
+        if (LocalServices.isLoggedInBool(getApplicationContext())) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            finish();
         }
     }
 
     @Override
-    protected void onDestroy(){
+    protected void onDestroy() {
         super.onDestroy();
         loginPresenter.unsetView();
     }
 
     @OnClick(R.id.login_button)
-    public void buttonLoginClicked(){
+    public void buttonLoginClicked() {
         Log.d(TAG, "ogin with email");
         String email = inputEmail.getText().toString();
         String password = inputPassword.getText().toString();

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -75,9 +76,10 @@ public class RecentEventAdapter extends RecyclerView.Adapter<RecentEventAdapter.
 
         Picasso.with(context).load(eventResponse.getPhotoUrl()).into(holder.eventImage);
 
-        holder.eventImage.setOnClickListener(new ClickListener(context, eventResponse.getPhotoUrl()));
-        holder.commentCount.setOnClickListener(new ClickListener(context, null));
-        holder.iconComment.setOnClickListener(new ClickListener(context, null));
+        holder.eventImage.setOnClickListener(new ClickListener(context, null, eventResponse));
+        holder.commentCount.setOnClickListener(new ClickListener(context, null, null));
+        holder.iconComment.setOnClickListener(new ClickListener(context, null, null));
+        holder.showMap.setOnClickListener(new ClickListener(context, null, eventResponse));
     }
 
     public void setDataSet(List<EventResponse> list) {
@@ -117,35 +119,41 @@ public class RecentEventAdapter extends RecyclerView.Adapter<RecentEventAdapter.
         @BindView(R.id.icon_comment)
         ImageView iconComment;
 
+        @BindView(R.id.show_maps_button)
+        Button showMap;
+
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
         }
     }
 
-
     private class ClickListener implements View.OnClickListener {
 
         Drawable drawable;
         Context context;
         String url;
+        EventResponse response;
 
-        public ClickListener(Context context, @Nullable String url) {
+        public ClickListener(Context context, @Nullable String url, @Nullable EventResponse response) {
             this.context = context;
             this.url = url;
+            this.response = response;
         }
 
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.gambar:
-                    Helper.showPhoto(context, url);
+                    Helper.showPhoto(context, response);
                     break;
                 case R.id.icon_comment:
                 case R.id.comment_count_item_recent:
                     Intent intent = new Intent(context, CommentActivity.class);
                     context.startActivity(intent);
                     break;
+                case R.id.show_maps_button:
+                    Helper.showMaps(context, response);
                 default:
                     break;
             }

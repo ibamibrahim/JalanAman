@@ -1,4 +1,3 @@
-
 package id.aicode.jalanaman.services.models.event;
 
 import com.google.gson.annotations.Expose;
@@ -15,9 +14,12 @@ public class EventResponse {
     @SerializedName("title")
     @Expose
     private String title;
-    @SerializedName("point")
+    @SerializedName("point_lat")
     @Expose
-    private String point;
+    private String pointLat;
+    @SerializedName("point_lang")
+    @Expose
+    private String pointLang;
     @SerializedName("time")
     @Expose
     private String time;
@@ -27,12 +29,6 @@ public class EventResponse {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
-
-    public String getPoster() {
-        return poster;
-    }
-
-    private String poster;
 
     public Integer getId() {
         return id;
@@ -58,12 +54,20 @@ public class EventResponse {
         this.title = title;
     }
 
-    public String getPoint() {
-        return point;
+    public String getPointLat() {
+        return pointLat;
     }
 
-    public void setPoint(String point) {
-        this.point = point;
+    public void setPointLat(String pointLat) {
+        this.pointLat = pointLat;
+    }
+
+    public String getPointLang() {
+        return pointLang;
+    }
+
+    public void setPointLang(String pointLang) {
+        this.pointLang = pointLang;
     }
 
     public String getTime() {
