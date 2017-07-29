@@ -35,6 +35,9 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     @BindView(R.id.password_input_reg_conf)
     TextView passwordConf;
 
+    @BindView(R.id.back_button)
+    TextView backButton;
+
     ProgressDialog dialog;
     RegisterPresenter presenter;
 
@@ -48,8 +51,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         /** for debugging purpose*/
         if (BuildConfig.BUILD_TYPE.equals("debug")) {
             String random = UUID.randomUUID().toString().substring(0, 7);
-            email.setText(random+"@gmail.com");
-            name.setText(random+"@gmail.com");
+            email.setText(random + "@gmail.com");
+            name.setText(random + "@gmail.com");
             password.setText("shauguyg3 y21 gua");
             passwordConf.setText("shauguyg3 y21 gua");
         }
@@ -85,6 +88,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         }
     }
 
+    @OnClick(R.id.back_button)
+    public void backButton() {
+        finish();
+    }
+
     @Override
     public void register(String password, String email, String name) {
         dialog = Helper.showProgressDialog(this, "Loading..");
@@ -110,6 +118,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     @Override
     public void registerFailed(String m) {
         dialog.dismiss();
-        Helper.createToast(getApplicationContext(), "Register failed! "+m);
+        Helper.createToast(getApplicationContext(), "Register failed! " + m);
     }
 }

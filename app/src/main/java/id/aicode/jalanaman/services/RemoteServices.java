@@ -9,6 +9,7 @@ import id.aicode.jalanaman.services.models.LoginData;
 import id.aicode.jalanaman.services.models.RegisterData;
 import id.aicode.jalanaman.services.models.event.EventResponse;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
+import id.aicode.jalanaman.services.models.place.PlaceResponse;
 import id.aicode.jalanaman.services.models.register.RegisterResponse;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -44,6 +45,11 @@ public class RemoteServices implements ServicesContract.RemoteContract {
     public Observable<List<EventResponse>> getRecentDangers(String token) {
         initRetrofit();
         return retrofit.getEvent(token);
+    }
+
+    public Observable<List<PlaceResponse>> getUserPlaces(String token){
+        initRetrofit();
+        return retrofit.getUserPlaces(token);
     }
 
     @Override

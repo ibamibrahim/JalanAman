@@ -38,15 +38,15 @@ import static id.aicode.jalanaman.R.id.url;
  * Created by Ibam on 7/25/2017.
  */
 
-public class RecentEventAdapter extends RecyclerView.Adapter<RecentEventAdapter.ViewHolder> {
+    public class RecentEventAdapter extends RecyclerView.Adapter<RecentEventAdapter.ViewHolder> {
 
-    Context context;
-    List<EventResponse> eventResponseList;
+        Context context;
+        List<EventResponse> eventResponseList;
 
-    public RecentEventAdapter(Context context, List<EventResponse> list) {
-        this.context = context;
-        this.eventResponseList = list;
-    }
+        public RecentEventAdapter(Context context, List<EventResponse> list) {
+            this.context = context;
+            this.eventResponseList = list;
+        }
 
     public Context getContext() {
         return this.context;

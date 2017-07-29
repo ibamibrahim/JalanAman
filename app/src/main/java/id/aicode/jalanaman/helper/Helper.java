@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
 import id.aicode.jalanaman.R;
@@ -32,16 +33,9 @@ public class Helper {
 
     }
 
-
-    public static void checkSession(Context context) {
-
-    }
-
-
     public static void createToast(Context context, String text) {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
     }
-
 
     public static ProgressDialog showProgressDialog(Context activity, String text) {
         ProgressDialog progressDialog = new ProgressDialog(activity);
@@ -83,4 +77,16 @@ public class Helper {
         context.startActivity(intent);
     }
 
+    public static <T> String objectToJson(T object){
+        Gson gson = new Gson();
+        String json = gson.toJson(object);
+        return json;
+    }
+
+    public static <T> T jsonToObject(String json, Class<T> classObject){
+        Gson gson = new Gson();
+        T object = gson.fromJson(json, classObject);
+
+        return object;
+    }
 }

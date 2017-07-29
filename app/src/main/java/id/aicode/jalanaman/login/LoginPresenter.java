@@ -3,11 +3,16 @@ package id.aicode.jalanaman.login;
 import android.content.Context;
 import android.util.Log;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.List;
+
 import id.aicode.jalanaman.BaseModel;
 import id.aicode.jalanaman.BaseView;
 import id.aicode.jalanaman.services.LocalServices;
 import id.aicode.jalanaman.services.RemoteServices;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
+import id.aicode.jalanaman.services.models.login.Place;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -66,7 +71,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                     @Override
                     public void onNext(LoginResponse loginResponse) {
                         if(loginResponse.getUser() != null){
-                            mView.loginSuccess();
+                            mView.loginSuccess(loginResponse);
                             saveToken(loginResponse.getToken(), context);
                         } else {
                             mView.loginFailed();

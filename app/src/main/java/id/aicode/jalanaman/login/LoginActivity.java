@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -21,6 +23,8 @@ import id.aicode.jalanaman.helper.Helper;
 import id.aicode.jalanaman.homepage.MainActivity;
 import id.aicode.jalanaman.register.RegisterActivity;
 import id.aicode.jalanaman.services.LocalServices;
+import id.aicode.jalanaman.services.models.login.LoginResponse;
+import id.aicode.jalanaman.services.models.login.Place;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -93,10 +97,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void loginSuccess() {
+    public void loginSuccess(LoginResponse response) {
         // pindah activity
+        List<Place> place = response.getUser().getProfile().getPlaces();
+        String json = Helper.objectToJson(place);
         dialog.dismiss();
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("placeJson", json);
         startActivity(intent);
     }
 

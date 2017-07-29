@@ -22,6 +22,7 @@ import id.aicode.jalanaman.recent.RecentEventAdapter;
 import id.aicode.jalanaman.services.models.event.EventResponse;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
 import id.aicode.jalanaman.services.models.login.Place;
+import id.aicode.jalanaman.services.models.place.PlaceResponse;
 
 /**
  * Created by Ibam on 7/28/2017.
@@ -30,9 +31,9 @@ import id.aicode.jalanaman.services.models.login.Place;
 public class MyPlaceAdapter extends RecyclerView.Adapter<MyPlaceAdapter.ViewHolder> {
 
     Context context;
-    List<Place> placeList;
+    List<PlaceResponse> placeList;
 
-    public MyPlaceAdapter(Context context, List<Place> list) {
+    public MyPlaceAdapter(Context context, List<PlaceResponse> list) {
         this.context = context;
         this.placeList = list;
     }
@@ -51,7 +52,7 @@ public class MyPlaceAdapter extends RecyclerView.Adapter<MyPlaceAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Place place = placeList.get(position);
+        PlaceResponse place = placeList.get(position);
 
         boolean isDanger = randomBool();
 
@@ -94,18 +95,21 @@ public class MyPlaceAdapter extends RecyclerView.Adapter<MyPlaceAdapter.ViewHold
         return UUID.randomUUID().toString().substring(0, 5);
     }
 
-    public void setDataSet(List<Place> list) {
+    public void setDataSet(List<PlaceResponse> list) {
         this.placeList = list;
     }
 
-    public void addDataSet(List<Place> list) {
+    public void addDataSet(List<PlaceResponse> list) {
         this.placeList.addAll(list);
     }
 
-    public void addEvent(Place place) {
+    public void addEvent(PlaceResponse place) {
         this.placeList.add(place);
     }
 
+    public List<PlaceResponse> getDataSet(){
+        return this.placeList;
+    }
     @Override
     public int getItemCount() {
         return this.placeList.size();
