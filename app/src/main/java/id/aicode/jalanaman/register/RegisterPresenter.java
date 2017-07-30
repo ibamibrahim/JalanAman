@@ -76,7 +76,6 @@ public class RegisterPresenter implements RegisterContract.Presenter {
                     @Override
                     public void onNext(RegisterResponse registerResponse) {
                         if (registerResponse != null) {
-                            saveToken(registerResponse.getToken(), context);
                             mView.registerSuccess();
                         } else {
                             mView.registerFailed("");

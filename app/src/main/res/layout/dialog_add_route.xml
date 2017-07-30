@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_safe"
-        android:text="Tambah lokasi"
+        android:text="Add new location"
         android:textAlignment="textStart"
         />
 
@@ -24,14 +24,18 @@
         <TextView
             style="@style/title"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
             android:padding="@dimen/small_space"
-            android:text="Tipe"/>
+            android:text="Tipe"
+            android:visibility="gone"/>
 
         <RadioGroup
+            android:id="@+id/radio_group"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/radio_group">
+            android:visibility="gone">
 
             <RadioButton
                 android:id="@+id/radio_add_location"
@@ -54,20 +58,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_space"
-            android:text="Nama lokasi/rute"/>
+            android:text="Name"/>
 
         <EditText
+            android:id="@+id/text_add_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/text_add_name"
             android:layout_marginBottom="@dimen/small_space"
-            android:text="Kantor"/>
+            android:hint="e.g Office"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/small_space"
-            android:text="Pilih lokasi/rute"/>
+            android:text="Select location"/>
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -77,17 +81,38 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/small_space">
+                android:orientation="horizontal">
 
-                    <include layout="@layout/item_select_place"
-                        android:id="@+id/item_select_place"/>
-                    <include layout="@layout/item_select_route"
-                        android:id="@+id/item_select_route"/>
+                <com.github.vipulasri.timelineview.TimelineView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/extra_small_space"
+                    app:line="@color/colorPrimaryDark"
+                    app:linePadding="2dp"
+                    app:lineSize="0dp"
+                    app:marker="@drawable/maps_orange"
+                    app:markerSize="20dp"/>
 
+                <EditText
+                    android:id="@+id/selected_location"
+                    style="@style/content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:hint="Location address.."/>
             </LinearLayout>
 
         </android.support.v7.widget.CardView>
+
+        <Button
+            android:layout_width="200dp"
+            android:id="@+id/open_maps_new"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_primary"
+            android:text="Select from maps"
+            android:textColor="@color/white"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -96,21 +121,30 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/button_red"
-                android:text="Cancel"
-                android:textColor="#fff"/>
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_green"
                 android:text="Save"
+                android:id="@+id/save_place"
                 android:textColor="#fff"/>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/back_button_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/button_red"
+            android:drawableLeft="@drawable/ic_back"
+            android:gravity="center"
+            android:paddingLeft="4dp"
+            android:paddingRight="12dp"
+            android:text="Back"
+            android:layout_marginTop="120dp"
+            android:textColor="@color/white"/>
+
 
     </LinearLayout>
 

@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
 import id.aicode.jalanaman.homepage.MainActivity;
 import id.aicode.jalanaman.register.RegisterActivity;
+import id.aicode.jalanaman.services.FirebaseInstanceIDService;
 import id.aicode.jalanaman.services.LocalServices;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
 import id.aicode.jalanaman.services.models.login.Place;
@@ -43,7 +47,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     LoginPresenter loginPresenter;
     ProgressDialog dialog;
 
-    String TAG = "Login";
+    String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +69,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             startActivity(intent);
             finish();
         }
+
+        testToken();
+    }
+
+    public void testToken(){
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.d(TAG, token);
+        Toast.makeText(getApplicationContext(), token, Toast.LENGTH_LONG).show();
     }
 
     @Override

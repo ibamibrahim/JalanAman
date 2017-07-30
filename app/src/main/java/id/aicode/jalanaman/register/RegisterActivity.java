@@ -17,6 +17,7 @@ import id.aicode.jalanaman.BuildConfig;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
 import id.aicode.jalanaman.homepage.MainActivity;
+import id.aicode.jalanaman.login.LoginActivity;
 import id.aicode.jalanaman.services.LocalServices;
 
 import static java.security.AccessController.getContext;
@@ -103,16 +104,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     @Override
     public void registerSuccess() {
         dialog.dismiss();
-        Helper.createToast(getApplicationContext(), "Register success! Now logging in to " +
-                "the apps..");
+        Helper.createToast(getApplicationContext(), "Now you can log in to the apps");
 
-        final Intent intent = new Intent(this, MainActivity.class);
-        new Timer().schedule(new TimerTask() {
-            @Override
-            public void run() {
-                startActivity(intent);
-            }
-        }, 1300);
+        final Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

@@ -1,0 +1,150 @@
+package id.aicode.jalanaman.addplace;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import id.aicode.jalanaman.R;
+import id.aicode.jalanaman.helper.Helper;
+import id.aicode.jalanaman.services.LocalServices;
+import id.aicode.jalanaman.services.models.NewPlaceData;
+
+public class AddPlaceActivity extends AppCompatActivity implements AddPlaceContract.View {
+
+    @BindView(R.id.text_add_name)
+    EditText placeName;
+
+    @BindView(R.id.selected_location)
+    EditText selectedLocation;
+
+    @BindView(R.id.open_maps_new)
+    Button openMapsButton;
+
+    @BindView(R.id.save_place)
+    Button savePlaceButton;
+
+    @BindView(R.id.back_button_place)
+    TextView backButton;
+
+    double latitude;
+    double langitude;
+    String realName;
+
+    AddPlacePresenter presenter;
+    private int PLACE_PICKER_REQUEST = 1;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.dialog_add_route);
+        ButterKnife.bind(this);
+
+        initPresenter();
+    }
+
+    private void initPresenter() {
+        presenter = new AddPlacePresenter();
+        presenter.setView(this);
+    }
+
+    @OnClick(R.id.save_place)
+    public void savePlace() {
+
+        if (placeName.getText().toString().equals("") || selectedLocation.getText().toString()
+                .equals("")) {
+            Helper.createToast(getApplicationContext(), "Please fill all fields!");
+        } else {
+            String name = placeName.getText().toString();
+            String type = "L";
+            double longitude = langitude;
+            double latitudes = latitude;
+            String created_at = getTime();
+            String owner = LocalServices.getUsername(getApplicationContext());
+            NewPlaceData data = new NewPlaceData(created_at, name, type, latitudes, longitude, 0,
+                    0, owner);
+            presenter.savePlace(getApplicationContext(), data);
+        }
+    }
+
+    private String getTime() {
+        DateFormat df = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
+        Date dateobj = new Date();
+        return df.format(dateobj);
+    }
+
+    @OnClick(R.id.back_button_place)
+    public void back() {
+        finish();
+    }
+
+    @OnClick(R.id.selected_location)
+    public void pickLocation2() {
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+        try {
+            //menjalankan place picker
+            startActivityForResult(builder.build(AddPlaceActivity.this), PLACE_PICKER_REQUEST);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @OnClick(R.id.open_maps_new)
+    public void pickLocation() {
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
+        try {
+            //menjalankan place picker
+            startActivityForResult(builder.build(AddPlaceActivity.this), PLACE_PICKER_REQUEST);
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void succesful() {
+        finish();
+    }
+
+    @Override
+    public void failed(String message) {
+        Helper.createToast(getApplicationContext(), message);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // menangkap hasil balikan dari Place Picker, dan menampilkannya pada TextView
+        if (requestCode == PLACE_PICKER_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                Place place = PlacePicker.getPlace(data, this);
+                String toastMsg = String.format(
+                        "Place: %s \n" +
+                                "Alamat: %s \n" +
+                                "Latlng %s \n", place.getName(), place.getAddress(), place.getLatLng().latitude + " " + place.getLatLng().longitude);
+                langitude = place.getLatLng().longitude;
+                latitude = place.getLatLng().latitude;
+                realName = place.getAddress().toString();
+                selectedLocation.setText(realName);
+                Helper.createToast(getApplicationContext(), toastMsg);
+            }
+        }
+    }
+}

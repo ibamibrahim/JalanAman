@@ -1,7 +1,10 @@
 package id.aicode.jalanaman.login;
 
 import android.content.Context;
+import android.nfc.Tag;
 import android.util.Log;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -13,6 +16,7 @@ import id.aicode.jalanaman.services.LocalServices;
 import id.aicode.jalanaman.services.RemoteServices;
 import id.aicode.jalanaman.services.models.login.LoginResponse;
 import id.aicode.jalanaman.services.models.login.Place;
+import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -52,12 +56,12 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void login(String password, String email, final Context context) {
-        // connect to services
-        // kalo sukses, post event bus dan mView.loginsukses
-        remoteServices.login(email, password)
+        // connect to service
+        String device_token = getDeviceToken();
+        remoteServices.login(email, password, device_token)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<LoginResponse>() {
+                .subscribe(new Subscriber<Response<LoginResponse>>() {
                     @Override
                     public void onCompleted() {
 
@@ -66,13 +70,22 @@ public class LoginPresenter implements LoginContract.Presenter {
                     @Override
                     public void onError(Throwable e) {
                         mView.loginFailed();
+                        e.printStackTrace();
                     }
 
                     @Override
-                    public void onNext(LoginResponse loginResponse) {
+                    public void onNext(Response<LoginResponse> response) {
+                        LoginResponse loginResponse = response.body();
+                        try {
+                            Log.d("LoginPresenter", response.isSuccessful() + " " + response
+                                    .errorBody().string());
+                        } catch (Exception e){
+                            e.printStackTrace();
+                        }
                         if(loginResponse.getUser() != null){
                             mView.loginSuccess(loginResponse);
-                            saveToken(loginResponse.getToken(), context);
+                            saveTokenAndUsername(loginResponse.getToken(), loginResponse.getUser
+                                    ().getUsername(), context);
                         } else {
                             mView.loginFailed();
                         }
@@ -80,9 +93,16 @@ public class LoginPresenter implements LoginContract.Presenter {
                 });
     };
 
-    private void saveToken(String token, Context context){
+    private String getDeviceToken(){
+        return FirebaseInstanceId.getInstance().getToken();
+    }
+
+    private void saveTokenAndUsername(String token, String username, Context context){
         token = "JWT " + token;
         LocalServices.saveToken(context, token);
+        LocalServices.saveUsername(context, username);
         Log.d("LoginPresenter", token);
     }
+
+
 }

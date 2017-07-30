@@ -16,6 +16,7 @@ public class LocalServices {
 
     private static String SHARED_PREF_NAME = "id.aicode.jalanaman";
     private static String TOKEN_SAVE_KEY = "id.aicoide.jalanaman.token";
+    private static String USERNAME_SAVE_KEY = "id.aicoide.jalanaman.username";
 
     public static void makeCall(Context context, String number) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
@@ -30,6 +31,13 @@ public class LocalServices {
 
     public void getPictureFromGallery() {
 
+    }
+
+    public static String getUsername(Context context){
+        SharedPreferences sharedPrefs = context.getSharedPreferences(SHARED_PREF_NAME, Context
+                .MODE_PRIVATE);
+        String username = sharedPrefs.getString(USERNAME_SAVE_KEY, null);
+        return username;
     }
 
     public static String getToken(Context context) {
@@ -60,6 +68,14 @@ public class LocalServices {
                 Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(TOKEN_SAVE_KEY, newToken);
+        editor.commit();
+    }
+
+    public static void saveUsername(Context context, String newUsername){
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME,
+                Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(USERNAME_SAVE_KEY, newUsername);
         editor.commit();
     }
 

@@ -8,7 +8,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,8 +26,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import id.aicode.jalanaman.R;
 import id.aicode.jalanaman.helper.Helper;
-import id.aicode.jalanaman.map.MapsActivity;
 import id.aicode.jalanaman.services.models.event.EventResponse;
+import id.aicode.jalanaman.report.ReportActivity;
 
 public class RecentTab extends Fragment implements RecentContract.View {
 
@@ -92,7 +91,17 @@ public class RecentTab extends Fragment implements RecentContract.View {
     }
 
     @OnClick(R.id.report_danger)
+    public void reportActivity(){
+        Intent intent = new Intent(getContext(), ReportActivity.class);
+        startActivity(intent);
+    }
+
+
     public void reportDanger() {
+
+        /**
+         * TODO: Implement this
+         */
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
         final View dialogView = getActivity().getLayoutInflater().inflate(R.layout
                         .dialog_report,
@@ -100,9 +109,11 @@ public class RecentTab extends Fragment implements RecentContract.View {
 
         dialogBuilder.setView(dialogView);
         AlertDialog dialog = dialogBuilder.create();
+
         Window window = dialog.getWindow();
         WindowManager.LayoutParams param = window.getAttributes();
         param.x = 450;
+
         dialog.show();
     }
 }

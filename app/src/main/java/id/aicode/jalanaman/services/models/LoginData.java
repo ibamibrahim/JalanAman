@@ -7,9 +7,11 @@ package id.aicode.jalanaman.services.models;
 public class LoginData {
     String email;
     String password;
+    String device_token;
 
-    public LoginData(String username, String password) {
+    public LoginData(String username, String password, String deviceToken) {
         this.email = username;
         this.password = password;
+        this.device_token = deviceToken;
     }
 }
