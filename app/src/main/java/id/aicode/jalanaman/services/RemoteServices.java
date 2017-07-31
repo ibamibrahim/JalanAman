@@ -48,7 +48,7 @@ public class RemoteServices implements ServicesContract.RemoteContract {
     }
 
     @Override
-    public Observable<List<EventResponse>> getRecentDangers(String token) {
+    public Observable<Response<List<EventResponse>>> getRecentDangers(String token) {
         initRetrofit();
         return retrofit.getEvent(token);
     }

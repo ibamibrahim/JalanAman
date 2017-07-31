@@ -3,6 +3,7 @@ package id.aicode.jalanaman.recent;
 import android.content.Context;
 import android.util.Log;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import id.aicode.jalanaman.services.JARemoteService;
 import id.aicode.jalanaman.services.LocalServices;
 import id.aicode.jalanaman.services.RemoteServices;
 import id.aicode.jalanaman.services.models.event.EventResponse;
+import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -25,7 +27,7 @@ public class RecentPresenter implements RecentContract.Presenter {
     private RecentContract.View mView;
     private RemoteServices remoteService;
 
-    public RecentPresenter(){
+    public RecentPresenter() {
         this.remoteService = new RemoteServices();
     }
 
@@ -56,7 +58,7 @@ public class RecentPresenter implements RecentContract.Presenter {
         remoteService.getRecentDangers(token)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<List<EventResponse>>() {
+                .subscribe(new Subscriber<Response<List<EventResponse>>>() {
                     @Override
                     public void onCompleted() {
 
@@ -68,12 +70,20 @@ public class RecentPresenter implements RecentContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(List<EventResponse> list) {
-                        Log.d("RecentPresenter", list.toString());
-                        if(list == null){
-                            mView.loadRecentDangersFailed("");
+                    public void onNext(Response<List<EventResponse>> response) {
+                        List<EventResponse> list = response.body();
+                        if (!response.isSuccessful()) {
+                            try {
+                                Log.d("RecentPresenter", response.message().toString());
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         } else {
-                            mView.loadRecentDangers(list);
+                            if (list == null) {
+                                mView.loadRecentDangersFailed("");
+                            } else {
+                                mView.loadRecentDangers(list);
+                            }
                         }
                     }
                 });

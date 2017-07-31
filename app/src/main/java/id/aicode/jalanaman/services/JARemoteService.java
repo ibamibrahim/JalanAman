@@ -34,7 +34,7 @@ public interface JARemoteService {
     Observable<RegisterResponse> register(@Body RegisterData data);
 
     @GET("/api/v1/event")
-    Observable<List<EventResponse>> getEvent(@Header("Authorization") String token);
+    Observable<Response<List<EventResponse>>> getEvent(@Header("Authorization") String token);
 
     @GET("/user/profile")
     Observable<ProfileResponse> getProfile(@Header("Authorization") String token);

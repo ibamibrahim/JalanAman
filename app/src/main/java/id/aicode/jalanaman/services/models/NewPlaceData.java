@@ -82,15 +82,8 @@ public class NewPlaceData {
         this.point_b_long = point_b_long;
     }
 
-    public String getOwner() {
-        return owner;
-    }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public NewPlaceData(String created_at, String name, String type, double point_a_lat, double point_a_long, double point_b_lat, double point_b_long, String owner) {
+    public NewPlaceData(String created_at, String name, String type, double point_a_lat, double point_a_long, double point_b_lat, double point_b_long) {
 
         this.created_at = created_at;
         this.name = name;
@@ -99,10 +92,7 @@ public class NewPlaceData {
         this.point_a_long = point_a_long;
         this.point_b_lat = point_b_lat;
         this.point_b_long = point_b_long;
-        this.owner = owner;
     }
-
-    private String owner;
 
     @Override
     public String toString() {
@@ -114,7 +104,6 @@ public class NewPlaceData {
                 ", point_a_long=" + point_a_long +
                 ", point_b_lat=" + point_b_lat +
                 ", point_b_long=" + point_b_long +
-                ", owner='" + owner + '\'' +
                 '}';
     }
 }

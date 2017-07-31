@@ -21,7 +21,7 @@ public interface ServicesContract {
     interface RemoteContract {
         Observable<Response<LoginResponse>> login(String email, String password, String token);
         Observable<RegisterResponse> register(RegisterData data);
-        Observable<List<EventResponse>> getRecentDangers(String token);
+        Observable<Response<List<EventResponse>>> getRecentDangers(String token);
     }
 
 }

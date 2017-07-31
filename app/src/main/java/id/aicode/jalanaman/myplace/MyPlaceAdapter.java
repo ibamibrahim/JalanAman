@@ -54,7 +54,7 @@ public class MyPlaceAdapter extends RecyclerView.Adapter<MyPlaceAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         PlaceResponse place = placeList.get(position);
 
-        boolean isDanger = randomBool();
+        boolean isDanger = false;
 
         if (isDanger) {
             holder.statusIcon.setImageDrawable(context.getDrawable(R.drawable.danger));

@@ -1,5 +1,6 @@
 package id.aicode.jalanaman.addplace;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,9 @@ import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
+import java.math.RoundingMode;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -48,6 +51,7 @@ public class AddPlaceActivity extends AppCompatActivity implements AddPlaceContr
     AddPlacePresenter presenter;
     private int PLACE_PICKER_REQUEST = 1;
 
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +70,9 @@ public class AddPlaceActivity extends AppCompatActivity implements AddPlaceContr
     @OnClick(R.id.save_place)
     public void savePlace() {
 
+        dialog = Helper.showProgressDialog(getApplicationContext(), "Loading..");
+        dialog.show();
+
         if (placeName.getText().toString().equals("") || selectedLocation.getText().toString()
                 .equals("")) {
             Helper.createToast(getApplicationContext(), "Please fill all fields!");
@@ -75,15 +82,14 @@ public class AddPlaceActivity extends AppCompatActivity implements AddPlaceContr
             double longitude = langitude;
             double latitudes = latitude;
             String created_at = getTime();
-            String owner = LocalServices.getUsername(getApplicationContext());
             NewPlaceData data = new NewPlaceData(created_at, name, type, latitudes, longitude, 0,
-                    0, owner);
+                    0);
             presenter.savePlace(getApplicationContext(), data);
         }
     }
 
     private String getTime() {
-        DateFormat df = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date dateobj = new Date();
         return df.format(dateobj);
     }
@@ -122,11 +128,13 @@ public class AddPlaceActivity extends AppCompatActivity implements AddPlaceContr
 
     @Override
     public void succesful() {
+        dialog.dismiss();
         finish();
     }
 
     @Override
     public void failed(String message) {
+        dialog.dismiss();
         Helper.createToast(getApplicationContext(), message);
     }
 
@@ -139,12 +147,18 @@ public class AddPlaceActivity extends AppCompatActivity implements AddPlaceContr
                         "Place: %s \n" +
                                 "Alamat: %s \n" +
                                 "Latlng %s \n", place.getName(), place.getAddress(), place.getLatLng().latitude + " " + place.getLatLng().longitude);
-                langitude = place.getLatLng().longitude;
-                latitude = place.getLatLng().latitude;
+                langitude = roundingToNineDigits(place.getLatLng().longitude);
+                latitude = roundingToNineDigits(place.getLatLng().latitude);
                 realName = place.getAddress().toString();
                 selectedLocation.setText(realName);
-                Helper.createToast(getApplicationContext(), toastMsg);
+                //Helper.createToast(getApplicationContext(), toastMsg);
             }
         }
+    }
+
+    private double roundingToNineDigits(double number){
+        DecimalFormat df = new DecimalFormat("#.######");
+        df.setRoundingMode(RoundingMode.CEILING);
+        return Double.parseDouble(df.format(number));
     }
 }

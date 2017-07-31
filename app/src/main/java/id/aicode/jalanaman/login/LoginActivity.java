@@ -59,10 +59,10 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         loginPresenter.setView(this);
 
         /** for debugging purpose*/
-        if (BuildConfig.BUILD_TYPE.equals("debug")) {
+        /*if (BuildConfig.BUILD_TYPE.equals("debug")) {
             inputEmail.setText("ibrahim52@ui.ac.id");
             inputPassword.setText("ibamibrahim");
-        }
+        }*/
 
         if (LocalServices.isLoggedInBool(getApplicationContext())) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -70,14 +70,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             finish();
         }
 
-        testToken();
     }
-
+/*
     public void testToken(){
         String token = FirebaseInstanceId.getInstance().getToken();
         Log.d(TAG, token);
-        Toast.makeText(getApplicationContext(), token, Toast.LENGTH_LONG).show();
-    }
+        //Toast.makeText(getApplicationContext(), token, Toast.LENGTH_LONG).show();
+    }*/
 
     @Override
     protected void onDestroy() {

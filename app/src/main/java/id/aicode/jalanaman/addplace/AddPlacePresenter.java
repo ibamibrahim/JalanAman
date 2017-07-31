@@ -79,7 +79,7 @@ public class AddPlacePresenter implements AddPlaceContract.Presenter {
                         if(response.isSuccessful()){
                             mView.succesful();
                         } else {
-                            mView.failed("Failed to report! " + response.message());
+                            mView.failed("Failed to add new place! " + response.message());
                         }
                     }
                 });

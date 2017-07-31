@@ -38,6 +38,7 @@
                     <TextView
                         android:id="@+id/title_item_myplace"
                         style="@style/title"
+                        android:textStyle="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/small_space"
@@ -54,6 +55,7 @@
                     <TextView
                         android:id="@+id/placeName2_item_myplace"
                         style="@style/content"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Ke: Jl. Condet Raya"/>
@@ -66,11 +68,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/red_darker"
-                android:text="Terdapat kebakaran di rute ini!"/>
+                android:text="Lokasi ini dalam kondisi aman"/>
 
             <LinearLayout
                 android:id="@+id/danger_information_layout_item_myplace"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 

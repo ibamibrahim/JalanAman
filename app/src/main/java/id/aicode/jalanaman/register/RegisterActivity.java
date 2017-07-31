@@ -50,13 +50,13 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         ButterKnife.bind(this);
 
         /** for debugging purpose*/
-        if (BuildConfig.BUILD_TYPE.equals("debug")) {
+       /* if (BuildConfig.BUILD_TYPE.equals("debug")) {
             String random = UUID.randomUUID().toString().substring(0, 7);
             email.setText(random + "@gmail.com");
             name.setText(random + "@gmail.com");
             password.setText("shauguyg3 y21 gua");
             passwordConf.setText("shauguyg3 y21 gua");
-        }
+        }*/
 
         if (LocalServices.isLoggedInBool(getApplicationContext())) {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
